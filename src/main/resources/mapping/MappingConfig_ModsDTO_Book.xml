@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <configuration>
+        <stop-on-errors>true</stop-on-errors>
+        <date-format>MM/dd/yyyy HH:mm</date-format>
+        <wildcard>true</wildcard>
+    </configuration>
+
+    <mapping>
+        <class-a>dto.mods.ModsDTO</class-a>
+        <class-b>entities.Book</class-b>
+
+        <field>
+            <a>typeOfResource</a>
+            <b>type</b>
+        </field>
+
+        <field>
+            <a>location.url</a>
+            <b>info</b>
+        </field>
+
+        <field>
+            <a>originInfo.publisher</a>
+            <b>publisher</b>
+        </field>
+
+        <field>
+            <a>originInfo.place.placeTerm</a>
+            <b>placeOfPublication</b>
+        </field>
+
+        <field>
+            <a>titleInfo.title</a>
+            <b>title</b>
+        </field>
+
+        <field>
+            <a>name.namePart</a>
+            <b>author</b>
+        </field>
+
+        <field>
+            <a date-format="yyyy">originInfo.dateIssued</a>
+            <b>publicationDate</b>
+        </field>
+
+        <field custom-converter="dto.mods.MetaDataConverter" custom-converter-param="FieldType1">
+            <a>metadatafield1</a>
+            <b>metadata</b>
+        </field>
+
+        <field custom-converter="dto.mods.MetaDataConverter" custom-converter-param="FieldType2">
+            <a>metadatafield2</a>
+            <b>metadata</b>
+        </field>
+
+    </mapping>
+
+</mappings>

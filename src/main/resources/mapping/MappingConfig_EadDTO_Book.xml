@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <configuration>
+        <stop-on-errors>true</stop-on-errors>
+        <date-format>MM/dd/yyyy HH:mm</date-format>
+        <wildcard>true</wildcard>
+    </configuration>
+
+    <mapping>
+        <class-a>dto.ead.EadDTO</class-a>
+        <class-b>entities.Book</class-b>
+
+        <field>
+            <a>control.filedesc.publicationstmt.publisher</a>
+            <b>publisher</b>
+        </field>
+
+        <field>
+            <a>control.filedesc.titlestmt.titleproper</a>
+            <b>title</b>
+        </field>
+
+        <field>
+            <a>control.filedesc.titlestmt.author</a>
+            <b>author</b>
+        </field>
+
+        <field>
+            <a date-format="yyyy">control.filedesc.publicationstmt.date</a>
+            <b>publicationDate</b>
+        </field>
+
+    </mapping>
+
+</mappings>

@@ -1,0 +1,45 @@
+<jxb:bindings xmlns="http://java.sun.com/xml/ns/jaxb"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+          xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+          xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+          version="2.1">
+    <bindings schemaLocation="mods-3-3.xsd">
+        <!-- Customise the package name -->
+        <schemaBindings>
+            <package name="mods"/>
+        </schemaBindings>
+
+        <!-- rename the value element -->
+
+		
+		<bindings node="//xsd:attributeGroup[@name='language']/xsd:attribute[@name='lang']">
+            <property name="languageLang"/>
+        </bindings>
+				
+		<bindings node="//xsd:complexType[@name='relatedItemType']/xsd:attribute[@name='type']">
+            <property name="itemType"/>
+        </bindings>
+		
+		<bindings node="//xsd:complexType[@name='stringPlusAuthorityPlusTypePlusLanguage']/xsd:simpleContent/xsd:extension[@base='stringPlusAuthorityPlusLanguage']/xsd:attribute[@name='type']">
+            <property name="stringType"/>
+        </bindings>
+		
+		<bindings node="//xsd:complexType[@name='stringPlusDisplayLabelPlusType']/xsd:simpleContent/xsd:extension[@base='stringPlusDisplayLabel']/xsd:attribute[@name='type']">
+            <property name="stringType"/>
+        </bindings>
+		
+		<bindings node="//xsd:complexType[@name='accessConditionType']/xsd:complexContent/xsd:extension[@base='extensionType']/xsd:attribute[@name='type']">
+            <property name="extensionType"/>
+        </bindings>
+		
+		<bindings node="//xsd:complexType[@name='titleInfoType']/xsd:complexContent/xsd:extension[@base='baseTitleInfoType']/xsd:attribute[@name='type']">
+            <property name="baseTitleInfoType"/>
+        </bindings>
+		
+		<bindings node="//xsd:complexType[@name='nameType']/xsd:attribute[@name='type']">
+            <property name="nameType"/>
+        </bindings>
+		
+		
+    </bindings>
+</jxb:bindings>

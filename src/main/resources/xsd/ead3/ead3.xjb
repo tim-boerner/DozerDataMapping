@@ -1,0 +1,22 @@
+<jxb:bindings xmlns="http://java.sun.com/xml/ns/jaxb"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+          xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+          xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+          version="2.1">
+    <bindings schemaLocation="ead3.xsd">
+        <!-- Customise the package name -->
+        <schemaBindings>
+            <package name="ead"/>
+        </schemaBindings>
+
+        <!-- rename the value element -->
+        <bindings node="//xsd:complexType[@name='languagedeclaration']/xsd:sequence/xsd:element[@name='script']">
+            <property name="languageDecScript"/>
+        </bindings>
+		
+		<bindings node="//xsd:complexType[@name='languageset']/xsd:sequence/xsd:element[@name='script']">
+            <property name="languagesetScript"/>
+        </bindings>
+		
+    </bindings>
+</jxb:bindings>

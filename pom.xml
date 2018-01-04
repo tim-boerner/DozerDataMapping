@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.dozerMappingTest</groupId>
+    <artifactId>dozerMappingTest</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>5.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics-runtime</artifactId>
+            <version>1.11.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/net.java.dev.vcc.thirdparty/collection-setter-injector -->
+        <dependency>
+            <groupId>net.java.dev.vcc.thirdparty</groupId>
+            <artifactId>collection-setter-injector</artifactId>
+            <version>0.5.0-1</version>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--
+                    If we e.g. execute on JDK 1.7, we should compile for Java 7 to get
+                    the same (or higher) JAXB API version as used during the xjc execution.
+                -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.13.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <extension>true</extension>
+                    <schemaDirectory>src/main/resources/xsd</schemaDirectory>
+                    <schemaIncludes>
+                        <include>*/mods-3-3.xsd</include>
+                        <include>*/ead3.xsd</include>
+                        <include>*/mets.xsd</include>
+                    </schemaIncludes>
+
+                    <bindingDirectory>src/main/resources/xsd</bindingDirectory>
+                    <bindingIncludes>
+                        <include>*/mods-3-3.xjb</include>
+                        <include>*/ead3.xjb</include>
+                        <include>*/mets.xjb</include>
+                    </bindingIncludes>
+                    <!--This can be uses if setters should also be generated at List<T>-fields-->
+                    <!--<args>-->
+                        <!--<arg>-Xsetters</arg>-->
+                    <!--</args>-->
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-basics</artifactId>
+                            <version>1.11.1</version>
+                        </plugin>
+                    </plugins>
+                    <generateDirectory>${project.build.directory}/generated-sources/xjc</generateDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

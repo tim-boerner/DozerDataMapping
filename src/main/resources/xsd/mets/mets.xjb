@@ -1,0 +1,19 @@
+<jxb:bindings xmlns="http://java.sun.com/xml/ns/jaxb"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+          xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+          xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+          version="2.1">
+    <bindings schemaLocation="mets.xsd">
+        <!-- Customise the package name -->
+        <schemaBindings>
+            <package name="mets"/>
+        </schemaBindings>
+
+        <!-- rename the value element -->
+        <bindings node="//xsd:complexType[@name='divType']">
+            <bindings node="//xsd:attribute[@ref='xlink:label']">
+                <property name="refLabel"/>
+            </bindings>
+        </bindings>
+    </bindings>
+</jxb:bindings>
